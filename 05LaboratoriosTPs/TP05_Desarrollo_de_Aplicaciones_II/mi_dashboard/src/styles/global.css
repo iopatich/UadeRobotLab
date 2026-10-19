@@ -353,7 +353,20 @@ code {
   border-radius: 7px;
   font-size: 11px;
   font-weight: 650;
+}
+
+.session-toolbar button:not(:disabled) {
+  cursor: pointer;
+}
+
+.session-toolbar button:not(:disabled):hover {
+  color: #9fb0c3;
+  border-color: #3a5064;
+}
+
+.session-toolbar button:disabled {
   cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .session-toolbar button:first-child {

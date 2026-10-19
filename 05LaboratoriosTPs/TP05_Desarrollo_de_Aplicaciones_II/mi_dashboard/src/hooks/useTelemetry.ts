@@ -37,6 +37,11 @@ export function useTelemetry(): TelemetrySession {
   const [lastError, setLastError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
   const snapshotRef = useRef<TelemetrySnapshot | null>(null);
+  const capturesRef = useRef<CapturedSample[]>([]);
+
+  useEffect(() => {
+    capturesRef.current = captures;
+  }, [captures]);
 
   useEffect(() => {
     let disposed = false;
@@ -87,10 +92,7 @@ export function useTelemetry(): TelemetrySession {
   }, []);
 
   const exportCsv = useCallback(() => {
-    setCaptures((samples) => {
-      downloadCsv(samples);
-      return samples;
-    });
+    downloadCsv(capturesRef.current);
   }, []);
 
   const retry = useCallback(() => setAttempt((n) => n + 1), []);
