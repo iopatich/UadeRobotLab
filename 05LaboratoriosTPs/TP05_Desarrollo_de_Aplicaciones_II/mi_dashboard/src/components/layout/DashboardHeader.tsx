@@ -4,6 +4,7 @@ import type { ConnectionState } from "../../types/telemetry";
 interface DashboardHeaderProps {
   connectionState: ConnectionState;
   updateRateHz: number;
+  sourceLabel?: string;
 }
 
 const CONNECTION_LABELS: Record<ConnectionState, string> = {
@@ -14,7 +15,7 @@ const CONNECTION_LABELS: Record<ConnectionState, string> = {
   disconnected: "SIN CONEXIÓN",
 };
 
-export function DashboardHeader({ connectionState, updateRateHz }: DashboardHeaderProps) {
+export function DashboardHeader({ connectionState, updateRateHz, sourceLabel = "API simulada" }: DashboardHeaderProps) {
   return (
     <header className="topbar">
       <a className="brand" href="#main-content" aria-label="Ir al monitor de telemetría">
@@ -36,7 +37,7 @@ export function DashboardHeader({ connectionState, updateRateHz }: DashboardHead
           <span className="connection-pill__dot" aria-hidden="true" />
           {CONNECTION_LABELS[connectionState]}
         </span>
-        <span className="topbar__source">Datos de muestra</span>
+        <span className="topbar__source">{sourceLabel}</span>
         <span className="topbar__frequency" title="Frecuencia objetivo de la API">
           <RotateCw size={14} aria-hidden="true" />
           {updateRateHz} Hz
