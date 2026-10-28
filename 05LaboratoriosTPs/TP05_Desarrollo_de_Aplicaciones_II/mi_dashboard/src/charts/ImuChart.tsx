@@ -31,21 +31,21 @@ const buildOptions = (visibleWindowSeconds: number): ChartOptions<"line"> => ({
       position: "bottom",
       align: "start",
       labels: {
-        color: "#93a0b2",
+        color: "#69ad7d",
         usePointStyle: true,
         pointStyle: "circle",
         boxWidth: 6,
         boxHeight: 6,
         padding: 18,
-        font: { family: "Inter, system-ui, sans-serif", size: 11 },
+        font: { family: "Consolas, Cascadia Mono, ui-monospace, monospace", size: 11 },
       },
     },
     tooltip: {
-      backgroundColor: "rgba(8, 13, 19, 0.95)",
-      borderColor: "#2b3948",
+      backgroundColor: "rgba(1, 8, 4, 0.97)",
+      borderColor: "#28d866",
       borderWidth: 1,
-      titleColor: "#e8eef6",
-      bodyColor: "#c4cfdd",
+      titleColor: "#46ff83",
+      bodyColor: "#bfffcf",
       displayColors: true,
       callbacks: {
         title: (items) => `${items[0]?.label ?? ""} s`,
@@ -55,10 +55,10 @@ const buildOptions = (visibleWindowSeconds: number): ChartOptions<"line"> => ({
   },
   scales: {
     x: {
-      grid: { color: "rgba(81, 101, 122, 0.16)" },
-      border: { color: "#293645" },
+      grid: { color: "rgba(44, 255, 112, 0.1)" },
+      border: { color: "#145c33" },
       ticks: {
-        color: "#65758a",
+        color: "#4c8a60",
         maxTicksLimit: 4,
         font: { family: "ui-monospace, SFMono-Regular, monospace", size: 10 },
         callback: (_value, index, ticks) => {
@@ -71,10 +71,10 @@ const buildOptions = (visibleWindowSeconds: number): ChartOptions<"line"> => ({
     y: {
       suggestedMin: -8,
       suggestedMax: 18,
-      grid: { color: "rgba(81, 101, 122, 0.2)" },
+      grid: { color: "rgba(44, 255, 112, 0.12)" },
       border: { display: false },
       ticks: {
-        color: "#65758a",
+        color: "#4c8a60",
         maxTicksLimit: 4,
         callback: (value) => `${value}°`,
         font: { family: "ui-monospace, SFMono-Regular, monospace", size: 10 },
@@ -94,8 +94,8 @@ export function ImuChart({ samples }: ImuChartProps) {
       {
         label: "Roll",
         data: samples.map((sample) => sample.roll),
-        borderColor: "#5cd7e8",
-        backgroundColor: "#5cd7e8",
+        borderColor: "#39ff7a",
+        backgroundColor: "#39ff7a",
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 3,
@@ -104,8 +104,8 @@ export function ImuChart({ samples }: ImuChartProps) {
       {
         label: "Pitch",
         data: samples.map((sample) => sample.pitch),
-        borderColor: "#e7b958",
-        backgroundColor: "#e7b958",
+        borderColor: "#ffb000",
+        backgroundColor: "#ffb000",
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 3,
@@ -114,8 +114,8 @@ export function ImuChart({ samples }: ImuChartProps) {
       {
         label: "Yaw",
         data: samples.map((sample) => sample.yaw),
-        borderColor: "#bda3f8",
-        backgroundColor: "#bda3f8",
+        borderColor: "#ff46e7",
+        backgroundColor: "#ff46e7",
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 3,

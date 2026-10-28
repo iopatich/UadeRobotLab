@@ -76,20 +76,21 @@ function App() {
       <DashboardHeader
         connectionState={connectionState}
         updateRateHz={robotInfo?.updateRateHz ?? 0}
-        sourceLabel={robotInfo ? `Backend · ${robotInfo.displayName}` : "Conectando…"}
+        sourceLabel={robotInfo ? `NODE · ${robotInfo.displayName}` : "BOOTING…"}
       />
 
       <main id="main-content" className="dashboard">
         <section className="dashboard-intro" aria-labelledby="dashboard-title">
           <div>
-            <span className="eyebrow">UADE · Desarrollo de Aplicaciones II</span>
-            <h1 id="dashboard-title">Monitor de telemetría</h1>
-            <p>Supervisión de motores, orientación, batería y contacto para robots Unitree.</p>
+            <span className="eyebrow">[ UADE::DA-II / TP05 / SYSTEM CONSOLE ]</span>
+            <h1 id="dashboard-title">TELEMETRY_OS</h1>
+            <p>&gt; Supervisión de motores, orientación, batería y contacto para robots Unitree.</p>
+            <code className="intro-status-line">BUILD: TP05 // MODE: OBSERVE // PROTOCOL: WS</code>
           </div>
 
           <div className="robot-context" aria-label="Contexto de datos">
             <div className="context-item">
-              <span><Radio size={13} aria-hidden="true" /> Robot detectado</span>
+              <span><Radio size={13} aria-hidden="true" /> Target node</span>
               <strong>{robotInfo?.displayName ?? "—"}</strong>
               <small>
                 {robotInfo
@@ -98,8 +99,8 @@ function App() {
               </small>
             </div>
             <div className="context-item">
-              <span><Server size={13} aria-hidden="true" /> Fuente de datos</span>
-              <strong>Backend TP05</strong>
+              <span><Server size={13} aria-hidden="true" /> Data uplink</span>
+              <strong>TP05 // BACKEND</strong>
               <small><code>{TELEMETRY_BASE_URL}</code></small>
             </div>
           </div>
@@ -110,7 +111,7 @@ function App() {
         ) : (
           <>
             <SessionToolbar
-              sessionLabel={`LIVE · ${robotInfo.displayName}`}
+              sessionLabel={`NODE::${robotInfo.displayName} // LIVE`}
               sampleCount={imuHistory.length}
               elapsedSeconds={snapshot.elapsedSeconds}
               captureCount={captures.length}

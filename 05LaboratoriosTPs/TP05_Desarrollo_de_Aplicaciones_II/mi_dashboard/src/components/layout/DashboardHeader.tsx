@@ -22,13 +22,13 @@ export function DashboardHeader({ connectionState, updateRateHz, sourceLabel = "
         <span className="brand__mark" aria-hidden="true">
           <Activity size={23} strokeWidth={1.8} />
         </span>
-        <span className="brand__name">Unitree<span>Lab</span></span>
+        <span className="brand__name">UNITREE<span>//LAB</span></span>
       </a>
 
       <nav className="topbar__nav" aria-label="Navegación principal">
         <span className="topbar__nav-item topbar__nav-item--active">
           <LayoutGrid size={15} />
-          Telemetría
+          TELEMETRY_OS
         </span>
       </nav>
 
