@@ -1,10 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  connectTelemetrySocket,
-  fetchRobotInfo,
-  type ConnectionStatus,
-  type TelemetrySocket,
-} from "../services/telemetryClient";
+import { RobotTelemetryFacade } from "../services/RobotTelemetryFacade";
 import { appendCapture, type CapturedSample } from "../features/capture/captureSession";
 import { downloadCsv } from "../features/export/csvExport";
 import type {
@@ -45,21 +40,21 @@ export function useTelemetry(): TelemetrySession {
 
   useEffect(() => {
     let disposed = false;
-    let socket: TelemetrySocket | null = null;
+    let socket: ReturnType<typeof RobotTelemetryFacade.connect> | null = null;
 
     setConnectionState("connecting");
     setRobotInfo(null);
     setSnapshot(null);
     snapshotRef.current = null;
     setImuHistory([]);
+    setLastError(null);
 
-    fetchRobotInfo()
+    RobotTelemetryFacade.getRobotInfo()
       .then((info) => {
         if (disposed) return;
         setRobotInfo(info);
-        setLastError(null);
-        socket = connectTelemetrySocket({
-          onStatus: (status: ConnectionStatus) => {
+        socket = RobotTelemetryFacade.connect({
+          onStatus: (status) => {
             if (!disposed) setConnectionState(status);
           },
           onSnapshot: (next) => {

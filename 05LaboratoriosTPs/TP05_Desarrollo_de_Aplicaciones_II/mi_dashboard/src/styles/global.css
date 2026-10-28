@@ -1014,6 +1014,56 @@ code {
   background: rgba(89, 213, 231, 0.16);
 }
 
+.stale-data-alert {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 16px;
+  padding: 11px 13px;
+  color: #d9a6ac;
+  background: rgba(239, 101, 116, 0.07);
+  border: 1px solid rgba(239, 101, 116, 0.3);
+  border-radius: 7px;
+}
+
+.stale-data-alert div {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.stale-data-alert strong {
+  flex: 0 0 auto;
+  color: var(--red);
+  font-size: 11px;
+}
+
+.stale-data-alert span {
+  color: #a78288;
+  font-size: 10px;
+}
+
+.stale-data-alert button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  color: #f0b0b7;
+  background: rgba(239, 101, 116, 0.08);
+  border: 1px solid rgba(239, 101, 116, 0.28);
+  border-radius: 5px;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stale-data-alert button:hover {
+  background: rgba(239, 101, 116, 0.16);
+}
+
 .spin {
   animation: connection-spin 1s linear infinite;
 }
@@ -1165,6 +1215,21 @@ code {
   .dashboard-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .stale-data-alert {
+    grid-template-columns: auto 1fr;
+  }
+
+  .stale-data-alert div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .stale-data-alert button {
+    grid-column: 1 / -1;
+    justify-content: center;
   }
 
   .temperature-legend {

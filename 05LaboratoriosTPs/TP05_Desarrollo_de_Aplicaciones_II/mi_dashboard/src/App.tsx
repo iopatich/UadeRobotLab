@@ -39,6 +39,22 @@ function ConnectionScreen({
   );
 }
 
+function StaleDataAlert({ onRetry }: { onRetry: () => void }) {
+  return (
+    <div className="stale-data-alert" role="alert">
+      <CircleAlert size={18} aria-hidden="true" />
+      <div>
+        <strong>Conexión perdida</strong>
+        <span>Los valores mostrados corresponden a la última lectura recibida y pueden estar desactualizados.</span>
+      </div>
+      <button type="button" onClick={onRetry}>
+        <RotateCcw size={14} aria-hidden="true" />
+        Reintentar
+      </button>
+    </div>
+  );
+}
+
 function App() {
   const {
     connectionState,
@@ -102,6 +118,10 @@ function App() {
               onCapture={captureSample}
               onExportCsv={exportCsv}
             />
+
+            {connectionState === "disconnected" ? (
+              <StaleDataAlert onRetry={retry} />
+            ) : null}
 
             <div className="dashboard-grid">
               <MotorPanel motors={snapshot.motors} expectedCount={robotInfo.motorCount} />

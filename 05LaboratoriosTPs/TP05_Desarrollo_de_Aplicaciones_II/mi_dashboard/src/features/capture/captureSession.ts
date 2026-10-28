@@ -7,7 +7,11 @@ export interface CapturedSample {
 }
 
 export function createCapturedSample(snapshot: TelemetrySnapshot): CapturedSample {
-  return { capturedAt: new Date(), sourceElapsedSeconds: snapshot.elapsedSeconds, snapshot };
+  return {
+    capturedAt: new Date(),
+    sourceElapsedSeconds: snapshot.elapsedSeconds,
+    snapshot: structuredClone(snapshot),
+  };
 }
 
 export function appendCapture(samples: CapturedSample[], snapshot: TelemetrySnapshot): CapturedSample[] {
