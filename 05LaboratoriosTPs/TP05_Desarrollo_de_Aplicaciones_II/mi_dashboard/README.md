@@ -4,6 +4,11 @@ Dashboard web desarrollado para el **TP05 de Desarrollo de Aplicaciones II**. La
 
 El proyecto está construido con React, TypeScript y Vite. La información inicial del robot se obtiene mediante `GET /info` y las lecturas en vivo llegan mediante el WebSocket `WS /ws`.
 
+## Integrantes
+-  Delfina Francisco Frate
+- Ignacio Roberto Opatich
+- Antonio Wu
+
 ## Funcionalidades implementadas
 
 - Detección automática del modelo, nombre y cantidad de motores del robot.
